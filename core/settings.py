@@ -101,11 +101,11 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'  # Prints emails t
 EMAIL_HOST = 'smtp.gmail.com'  # For production (e.g., Gmail)
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'hhhassanhafeez91@gmail.com'  # Replace with your email
-EMAIL_HOST_PASSWORD = 'oaau oewi xree vgaz'  # Replace with your email password
+EMAIL_HOST_USER = '11anonuser@gmail.com'  # Replace with your email
+EMAIL_HOST_PASSWORD = 'csrd eexg drio lkxi'  # Replace with your email password
 
 # Default email address for sending emails
-DEFAULT_FROM_EMAIL = 'hhhassanhafeez91@gmail.com'
+DEFAULT_FROM_EMAIL = '11anonuser@gmail.com'
 
 
 # Password validation
