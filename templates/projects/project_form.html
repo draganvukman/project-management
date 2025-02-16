@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow">
+                <div class="card-body">
+                    <h2 class="card-title text-center mb-4">{{ form.instance.pk|default:"Create" }} Project</h2>
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label for="{{ form.name.id_for_label }}" class="form-label">Project Name</label>
+                            <input type="text" name="{{ form.name.name }}" id="{{ form.name.id_for_label }}" class="form-control" value="{{ form.name.value|default:'' }}">
+                            {% if form.name.errors %}
+                                <div class="text-danger">{{ form.name.errors }}</div>
+                            {% endif %}
+                        </div>
+                        <div class="mb-3">
+                            <label for="{{ form.description.id_for_label }}" class="form-label">Description</label>
+                            <textarea name="{{ form.description.name }}" id="{{ form.description.id_for_label }}" class="form-control">{{ form.description.value|default:'' }}</textarea>
+                            {% if form.description.errors %}
+                                <div class="text-danger">{{ form.description.errors }}</div>
+                            {% endif %}
+                        </div>
+                        <div class="mb-3">
+                            <label for="{{ form.start_date.id_for_label }}" class="form-label">Start Date</label>
+                            <input type="date" name="{{ form.start_date.name }}" id="{{ form.start_date.id_for_label }}" class="form-control" value="{{ form.start_date.value|date:'Y-m-d' }}">
+                            {% if form.start_date.errors %}
+                                <div class="text-danger">{{ form.start_date.errors }}</div>
+                            {% endif %}
+                        </div>
+                        <div class="mb-3">
+                            <label for="{{ form.end_date.id_for_label }}" class="form-label">End Date</label>
+                            <input type="date" name="{{ form.end_date.name }}" id="{{ form.end_date.id_for_label }}" class="form-control" value="{{ form.end_date.value|date:'Y-m-d' }}">
+                            {% if form.end_date.errors %}
+                                <div class="text-danger">{{ form.end_date.errors }}</div>
+                            {% endif %}
+                        </div>
+                        <div class="mb-3">
+                            <label for="{{ form.stakeholders.id_for_label }}" class="form-label">Stakeholders</label>
+                            <select name="{{ form.stakeholders.name }}" id="{{ form.stakeholders.id_for_label }}" class="form-control" multiple>
+                                {% for stakeholder in form.stakeholders.field.queryset %}
+                                    <option value="{{ stakeholder.pk }}" {% if stakeholder.pk in form.stakeholders.value %}selected{% endif %}>{{ stakeholder.username }}</option>
+                                {% endfor %}
+                            </select>
+                            {% if form.stakeholders.errors %}
+                                <div class="text-danger">{{ form.stakeholders.errors }}</div>
+                            {% endif %}
+                        </div>
+                        <div class="mb-3">
+                            <label for="{{ form.status.id_for_label }}" class="form-label">Status</label>
+                            <select name="{{ form.status.name }}" id="{{ form.status.id_for_label }}" class="form-control">
+                                {% for value, label in form.status.field.choices %}
+                                    <option value="{{ value }}" {% if form.status.value == value %}selected{% endif %}>{{ label }}</option>
+                                {% endfor %}
+                            </select>
+                            {% if form.status.errors %}
+                                <div class="text-danger">{{ form.status.errors }}</div>
+                            {% endif %}
+                        </div>
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary">Save</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
