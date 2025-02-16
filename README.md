@@ -203,5 +203,3 @@ For questions or feedback, please contact:
 - **GitHub**: [draganvukman](https://github.com/draganvukman)
 
 ---
-
-This `README.md` provides a comprehensive guide for setting up, running, and deploying your Django project.
