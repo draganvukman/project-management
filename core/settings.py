@@ -97,7 +97,7 @@ DATABASES = {
 }
 
 # Email Configuration (Development)
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'  # Prints emails to the console
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'  # Prints emails to the console
 EMAIL_HOST = 'smtp.gmail.com'  # For production (e.g., Gmail)
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
